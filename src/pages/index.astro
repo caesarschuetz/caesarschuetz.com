@@ -1,25 +1,64 @@
 ---
 import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('writing', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 5);
+const fmt = (d: Date) => d.toLocaleDateString('en-GB', { year: 'numeric', month: 'short' });
 ---
 
 <Base
   title="Caesar Schütz"
-  description="Wealth Manager and Tech Entrepreneur from Munich."
+  description="Wealth Manager and Tech Entrepreneur from Munich. I build products and advise people on their money."
 >
-  <section>
-    <p class="label">Caesar Schütz</p>
-    <h1>Wealth Manager and Tech&nbsp;Entrepreneur from Munich.</h1>
-    <p style="margin-top: 28px; font-size: 19px;">
-      I build products and advise people on their money.
-    </p>
+  <section class="intro">
+    <h1>Wealth Manager and Tech Entrepreneur from Munich.</h1>
+    <p>I build products and advise people on their money.</p>
+    <p class="muted">Right now I am building something new in stealth and travelling the world. Munich is home.</p>
   </section>
 
-  <section>
-    <p class="label">Elsewhere</p>
-    <ul class="plain">
-      <li><a href="https://www.linkedin.com/in/caesar-schuetz">LinkedIn</a></li>
-      <li><a href="https://x.com/caesar_schuetz">X</a></li>
-      <li><a href="https://github.com/caesarschuetz">GitHub</a></li>
-    </ul>
+  <section id="work">
+    <h2>Work</h2>
+    <div class="item">
+      <h3>Kalo AI <span class="when">2025</span></h3>
+      <p>A voice AI agent for personal nutrition. You just say what you ate. Built with no app development background and no funding, profitable within six months.</p>
+    </div>
+    <div class="item">
+      <h3>tecis, Swiss Life Group <span class="when">since 2020</span></h3>
+      <p>From trainee to team lead of 25 advisors to self-employed advisor with my own clients. I advise 500+ people on investments and personal assets.</p>
+    </div>
+    <div class="item">
+      <h3>Lead-Kraft <span class="when">2017</span></h3>
+      <p>Co-founded. Connects people with lawyers and financial advisors under the consumer brand VerbraucherCheck.net. 5,000+ people helped in the first two years.</p>
+    </div>
+    <div class="item">
+      <h3>Information Systems, TUM <span class="when">2024 to 2027</span></h3>
+      <p>Bachelor's degree.</p>
+    </div>
+  </section>
+
+  <section id="writing">
+    <h2>Writing</h2>
+    {posts.length === 0 ? (
+      <p class="muted">Nothing published yet.</p>
+    ) : (
+      <ul class="posts">
+        {posts.map((p) => (
+          <li><time datetime={p.data.date.toISOString()}>{fmt(p.data.date)}</time><a href={`/writing/${p.id}/`}>{p.data.title}</a></li>
+        ))}
+      </ul>
+    )}
+    {posts.length > 0 && <p style="margin-top: 16px;"><a href="/writing/">All writing</a></p>}
+  </section>
+
+  <section id="elsewhere">
+    <h2>Elsewhere</h2>
+    <p>
+      <a href="https://www.linkedin.com/in/caesar-schuetz">LinkedIn</a>,
+      <a href="https://x.com/caesar_schuetz">X</a>,
+      <a href="https://github.com/caesarschuetz">GitHub</a>.
+      Email: <a href="mailto:info@caesarschuetz.com">info@caesarschuetz.com</a>
+    </p>
   </section>
 </Base>
