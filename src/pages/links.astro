@@ -2,15 +2,11 @@
 import '../styles/global.css';
 
 const links = [
-  { label: 'Website', sub: 'caesarschuetz.com', href: 'https://caesarschuetz.com' },
-  { label: 'Writing', sub: 'Essays and notes', href: 'https://caesarschuetz.com/writing/' },
-  { label: 'Newsletter', sub: 'caesarschuetz.substack.com', href: 'https://caesarschuetz.substack.com' },
-  { label: 'LinkedIn', sub: 'in/caesar-schuetz', href: 'https://www.linkedin.com/in/caesar-schuetz' },
-  { label: 'Instagram', sub: '@caesarschuetz', href: 'https://www.instagram.com/caesarschuetz/' },
-  { label: 'X', sub: '@caesar_schuetz', href: 'https://x.com/caesar_schuetz' },
-  { label: 'GitHub', sub: 'caesarschuetz', href: 'https://github.com/caesarschuetz' },
-  { label: 'Hey Kalo', sub: 'App Store', href: 'https://apps.apple.com/de/app/hey-kalo-ai-kalorienzähler/id6743714464' },
-  { label: 'Email', sub: 'info@caesarschuetz.com', href: 'mailto:info@caesarschuetz.com' },
+  { label: 'Instagram', sub: '@caesarschuetz', href: 'https://www.instagram.com/caesarschuetz/', icon: 'instagram' },
+  { label: 'X', sub: '@caesar_schuetz', href: 'https://x.com/caesar_schuetz', icon: 'x' },
+  { label: 'LinkedIn', sub: 'in/caesar-schuetz', href: 'https://www.linkedin.com/in/caesar-schuetz', icon: 'linkedin' },
+  { label: 'Substack', sub: 'caesarschuetz.substack.com', href: 'https://caesarschuetz.substack.com', icon: 'substack' },
+  { label: 'GitHub', sub: 'caesarschuetz', href: 'https://github.com/caesarschuetz', icon: 'github' },
 ];
 ---
 
@@ -33,11 +29,14 @@ const links = [
     .links-wrap ul { list-style: none; padding: 0; margin: 0; }
     .links-wrap li { margin-bottom: 12px; }
     .links-wrap a.btn {
-      display: block; padding: 14px 18px; border: 1px solid var(--ink); border-radius: 8px;
+      display: flex; align-items: center; gap: 14px; text-align: left; padding: 14px 18px; border: 1px solid var(--ink); border-radius: 8px;
       color: var(--ink); text-decoration: none; background: transparent;
       transition: background 120ms ease, color 120ms ease;
     }
     .links-wrap a.btn:hover, .links-wrap a.btn:focus-visible { background: var(--ink); color: var(--paper); outline: none; }
+    .links-wrap a.btn .ic { width: 22px; height: 22px; flex: 0 0 22px; }
+    .links-wrap a.btn:hover .ic { filter: invert(1); }
+    .links-wrap a.btn .t { display: block; flex: 1; text-align: left; }
     .links-wrap a.btn .l { font-weight: 600; font-size: 17px; }
     .links-wrap a.btn .s { display: block; font-size: 14px; opacity: 0.7; margin-top: 2px; }
     .links-wrap a.btn:hover .s { opacity: 0.85; }
@@ -52,10 +51,10 @@ const links = [
     <p class="tag">Tech Entrepreneur and Wealth Manager from Munich</p>
     <ul>
       {links.map((l) => (
-        <li><a class="btn" href={l.href}><span class="l">{l.label}</span><span class="s">{l.sub}</span></a></li>
+        <li><a class="btn" href={l.href}><img class="ic" src={`/icons/${l.icon}.svg`} alt="" width="22" height="22" loading="lazy" /><span class="t"><span class="l">{l.label}</span><span class="s">{l.sub}</span></span></a></li>
       ))}
     </ul>
-    <footer><a href="/impressum/">Impressum</a></footer>
+    <footer><a href="https://caesarschuetz.com">caesarschuetz.com</a> · <a href="mailto:info@caesarschuetz.com">info@caesarschuetz.com</a> · <a href="/impressum/">Impressum</a></footer>
   </main>
 </body>
 </html>
