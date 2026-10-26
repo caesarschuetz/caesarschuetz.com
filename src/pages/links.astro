@@ -2,11 +2,12 @@
 import '../styles/global.css';
 
 const links = [
+  { label: 'Website', sub: 'caesarschuetz.com', href: 'https://caesarschuetz.com', icon: 'website' },
   { label: 'Instagram', sub: '@caesarschuetz', href: 'https://www.instagram.com/caesarschuetz/', icon: 'instagram' },
   { label: 'X', sub: '@caesar_schuetz', href: 'https://x.com/caesar_schuetz', icon: 'x' },
   { label: 'LinkedIn', sub: 'in/caesar-schuetz', href: 'https://www.linkedin.com/in/caesar-schuetz', icon: 'linkedin' },
-  { label: 'Substack', sub: 'caesarschuetz.substack.com', href: 'https://caesarschuetz.substack.com', icon: 'substack' },
   { label: 'GitHub', sub: 'caesarschuetz', href: 'https://github.com/caesarschuetz', icon: 'github' },
+  { label: 'Substack', sub: 'caesarschuetz.substack.com', href: 'https://caesarschuetz.substack.com', icon: 'substack' },
 ];
 ---
 
@@ -54,7 +55,7 @@ const links = [
         <li><a class="btn" href={l.href}><img class="ic" src={`/icons/${l.icon}.svg`} alt="" width="22" height="22" loading="lazy" /><span class="t"><span class="l">{l.label}</span><span class="s">{l.sub}</span></span></a></li>
       ))}
     </ul>
-    <footer><a href="https://caesarschuetz.com">caesarschuetz.com</a> · <a href="mailto:info@caesarschuetz.com">info@caesarschuetz.com</a> · <a href="/impressum/">Impressum</a></footer>
+    <footer><a href="mailto:info@caesarschuetz.com">info@caesarschuetz.com</a> · <a href="/impressum/">Impressum</a></footer>
   </main>
 </body>
 </html>
