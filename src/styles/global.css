@@ -48,6 +48,7 @@ main { padding-top: 48px; }
 
 section { margin-bottom: 72px; }
 
+.intro .portrait { display: block; width: 168px; height: 210px; object-fit: cover; border-radius: 6px; margin-bottom: 32px; }
 .intro h1 { margin-bottom: 20px; }
 .intro p { font-size: 21px; line-height: 1.5; }
 
