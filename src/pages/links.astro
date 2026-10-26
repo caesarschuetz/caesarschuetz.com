@@ -1,0 +1,61 @@
+---
+import '../styles/global.css';
+
+const links = [
+  { label: 'Website', sub: 'caesarschuetz.com', href: 'https://caesarschuetz.com' },
+  { label: 'Writing', sub: 'Essays and notes', href: 'https://caesarschuetz.com/writing/' },
+  { label: 'Newsletter', sub: 'caesarschuetz.substack.com', href: 'https://caesarschuetz.substack.com' },
+  { label: 'LinkedIn', sub: 'in/caesar-schuetz', href: 'https://www.linkedin.com/in/caesar-schuetz' },
+  { label: 'Instagram', sub: '@caesarschuetz', href: 'https://www.instagram.com/caesarschuetz/' },
+  { label: 'X', sub: '@caesar_schuetz', href: 'https://x.com/caesar_schuetz' },
+  { label: 'GitHub', sub: 'caesarschuetz', href: 'https://github.com/caesarschuetz' },
+  { label: 'Hey Kalo', sub: 'App Store', href: 'https://apps.apple.com/de/app/hey-kalo-ai-kalorienzähler/id6743714464' },
+  { label: 'Email', sub: 'info@caesarschuetz.com', href: 'mailto:info@caesarschuetz.com' },
+];
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Links, Caesar Schütz</title>
+  <meta name="description" content="All links for Caesar Schütz in one place." />
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    .links-wrap { max-width: 440px; margin: 0 auto; padding: 48px 20px 64px; text-align: center; }
+    .links-wrap img { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; object-position: top; display: block; margin: 0 auto 16px; }
+    .links-wrap h1 { font-size: 22px; margin-bottom: 6px; }
+    .links-wrap .tag { color: var(--muted); font-size: 16px; margin-bottom: 32px; }
+    .links-wrap ul { list-style: none; padding: 0; margin: 0; }
+    .links-wrap li { margin-bottom: 12px; }
+    .links-wrap a.btn {
+      display: block; padding: 14px 18px; border: 1px solid var(--ink); border-radius: 8px;
+      color: var(--ink); text-decoration: none; background: transparent;
+      transition: background 120ms ease, color 120ms ease;
+    }
+    .links-wrap a.btn:hover, .links-wrap a.btn:focus-visible { background: var(--ink); color: var(--paper); outline: none; }
+    .links-wrap a.btn .l { font-weight: 600; font-size: 17px; }
+    .links-wrap a.btn .s { display: block; font-size: 14px; opacity: 0.7; margin-top: 2px; }
+    .links-wrap a.btn:hover .s { opacity: 0.85; }
+    .links-wrap footer { margin-top: 36px; font-size: 14px; color: var(--muted); }
+    .links-wrap footer a { color: var(--muted); }
+  </style>
+</head>
+<body>
+  <main class="links-wrap">
+    <img src="/portrait.jpg" srcset="/portrait.jpg 1x, /portrait@2x.jpg 2x" alt="Caesar Schütz" />
+    <h1>Caesar Schütz</h1>
+    <p class="tag">Wealth Manager and Tech Entrepreneur from Munich</p>
+    <ul>
+      {links.map((l) => (
+        <li><a class="btn" href={l.href}><span class="l">{l.label}</span><span class="s">{l.sub}</span></a></li>
+      ))}
+    </ul>
+    <footer><a href="/impressum/">Impressum</a></footer>
+  </main>
+</body>
+</html>
