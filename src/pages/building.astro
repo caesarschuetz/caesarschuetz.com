@@ -1,0 +1,62 @@
+---
+import Base from '../layouts/Base.astro';
+
+const things = [
+  {
+    name: 'App Starter',
+    when: '2026',
+    text: 'An Expo template for iOS and Android with onboarding, login, paywall, an AI screen and English plus German, every backend mocked so it runs right after cloning. Open source.',
+    href: 'https://github.com/caesarschuetz/app-starter',
+    label: 'GitHub',
+  },
+  {
+    name: 'jointable.app',
+    when: '',
+    text: '',
+    href: 'https://jointable.app',
+    label: 'jointable.app',
+  },
+  {
+    name: 'Hey Kalo',
+    when: '2025',
+    text: 'Calorie tracking by voice. You say what you ate, the app does the rest. Taught myself React Native for it, shipped to the App Store and Google Play, profitable within six months and without an ad budget.',
+    href: 'https://apps.apple.com/de/app/hey-kalo-ai-kalorienzähler/id6743714464',
+    label: 'App Store',
+  },
+  {
+    name: 'Sunday Runday',
+    when: '2025',
+    text: 'A running club in Munich. Weekly social run through the Englischer Garten, brunch after.',
+    href: 'https://www.instagram.com/sunday.runday.munich/',
+    label: 'Instagram',
+  },
+  {
+    name: 'VerbraucherCheck.net',
+    when: '2017',
+    text: 'The consumer side of Lead-Kraft. People describe their problem, the platform matches them with a lawyer or financial advisor. Several thousand people helped in the first two years.',
+    href: 'https://verbrauchercheck.net',
+    label: 'verbrauchercheck.net',
+  },
+  {
+    name: 'Lead-Kraft',
+    when: '2017',
+    text: 'My first company, co-founded. Lead generation for lawyers and financial advisors, built on the VerbraucherCheck platform. I ran it until 2020. It still exists.',
+    href: '',
+    label: '',
+  },
+];
+---
+
+<Base title="Building, Caesar Schütz" description="Everything Caesar Schütz has built so far.">
+  <section>
+    <h2>Building</h2>
+    <p class="muted">Everything I have shipped so far, newest first. Some of it is still running, some of it taught me something and then stopped.</p>
+    {things.map((t) => (
+      <div class="item">
+        <h3>{t.name}{t.when && <span class="when">{t.when}</span>}</h3>
+        {t.text && <p>{t.text}</p>}
+        {t.href && <p><a href={t.href}>{t.label}</a></p>}
+      </div>
+    ))}
+  </section>
+</Base>
